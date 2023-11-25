@@ -1,0 +1,297 @@
+  <body>
+    <header class="navbar navbar-expand-md navbar-light shadow-sm">
+      <div class="container-lg">
+        <button
+          type="button"
+          class="navbar-toggler rounded-pill bg-primary me-auto"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sidebar-menu"
+        >
+          <span><i class="bi bi-list"></i></span>
+        </button>
+        <nav class="collapse navbar-collapse" id="navbar-content">
+          <ul class="navbar-nav justify-content-center me-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="About.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="products.html" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+              <a href="index.html#contact" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="navbar-brand">
+          <a href="index.html" class="logo h2 text-decoration-none text-primary"
+            >Online <span class="fw-bold fs-2 text-light">Shop</span>
+          </a>
+        </div>
+
+        <div
+          class="cart-icon position-relative"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#cart"
+          aria-controls="offcanvasRight"
+        >
+          <i class="bi bi-cart fs-5"></i>
+          <span
+            class="rounded-circle bg-primary position-absolute count-icon top-0 end-0 d-flex justify-content-center align-items-center text-light"
+            >0</span
+          >
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+    <!-- start sidebar menu -->
+    <div
+      class="offcanvas offcanvas-start mw-75"
+      tabindex="-1"
+      id="sidebar-menu"
+      aria-labelledby="offcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="list-group">
+          <li class="list-group-item border-0">
+            <a class="text-dark text-decoration-none fs-5" href="index.html"
+              >Home</a
+            >
+          </li>
+          <li class="list-group-item border-0">
+            <a class="text-dark text-decoration-none fs-5" href="About.html"
+              >About</a
+            >
+          </li>
+          <li class="list-group-item border-0">
+            <a class="text-dark text-decoration-none fs-5" href="products.html"
+              >Products</a
+            >
+          </li>
+          <li class="list-group-item border-0">
+            <a
+              class="text-dark text-decoration-none fs-5"
+              href="index.html#contact"
+              >Contact</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!--end sidebar menu -->
+    <!-- start cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="cart"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body py-5">
+        <h1 class="h5">Your Bag:</h1>
+        <h2 class="h5 cart-emty-msg">Your cart is empty</h2>
+        <div class="cart-content">
+          <!-- <article
+        class="row justify-content-start align-items-center border border-3 border-top-0 border-start-0 border-end-0"
+      >
+        <div class="col-4">
+          <img src="./images/1.jpg" alt="Product image" class="img-fluid" />
+        </div>
+        <div
+          class="col-8 ps-2 align-items-end d-flex justify-content-between align-items-center"
+        >
+          <div class="text d-inline-block">
+            <h1 class="fs-5 product-name-cart mb-0">Product 1</h1>
+            <p class="text-muted mb-1 cart-price">price$</p>
+            <span class="fs-6 fw-bold text-decoration-underline"
+              >Remove</span
+            >
+          </div>
+          <div
+            class="flex-column d-inline-flex justify-content-center align-items-end"
+          >
+            <button
+              type="button"
+              class="d-flex justify-content-center align-items-center text-primary btn cart-increase"
+            >
+              <i class="bi bi-chevron-compact-up"></i>
+            </button>
+            <button
+              type="button"
+              class="d-flex justify-content-center align-items-center btn cart-amount"
+            >
+              1
+            </button>
+            <button
+              type="button"
+              class="d-flex justify-content-center align-items-center btn text-primary cart-decrease"
+            >
+              <i class="bi bi-chevron-compact-down"></i>
+            </button>
+          </div>
+        </div>
+      </article> -->
+        </div>
+        <div class="cart-footer fw-bold fs-3 hide">Total: <span>20£</span></div>
+        <div class="w-100 position-relative">
+          <button
+            class="btn-primary btn-lg d-block mx-auto hide checkout w-75 mt-3"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- end cart -->
+    <!-- start hero  -->
+    <section class="hero py-5 fs-3">
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Products</li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+    <!-- end hero -->
+    <!-- start products -->
+
+    <section class="products py-5">
+      <div class="container-lg">
+        <div class="row gy-4">
+          <div class="col-sm-12 col-lg-3">
+            <div class="filters shadow border-1 p-3 filters">
+              <div class="serach">
+                <form action="#" class="search-form">
+                  <div class="input-group">
+                    <input
+                      type="search"
+                      name="search"
+                      id="search"
+                      placeholder="Search ..."
+                      class="mw-100 form-control"
+                    />
+                    <button class="btn btn-primary search-btn" type="submit">
+                      <i class="bi bi-search"></i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="category mt-3 pd-3">
+                <h1 class="h4 fw-bold">Categories</h1>
+                <ul class="list-group categories">
+                  <li class="list-group-item border-0 text-muted active">
+                    ALL
+                  </li>
+                  <li class="list-group-item border-0 text-muted">category1</li>
+                  <li class="list-group-item border-0 text-muted">category2</li>
+                  <li class="list-group-item border-0 text-muted">category3</li>
+                </ul>
+              </div>
+              <div class="price-range mt-3">
+                <h2 class="h4 fw-bold">Price</h2>
+                <form class="price-r">
+                  <input
+                    type="range"
+                    name="price"
+                    id="price"
+                    max="100"
+                    min="0"
+                    value="50"
+                    class="w-100"
+                  />
+                  <span
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <span class="min text-muted">0</span>
+                    <span class="max text-muted">100</span>
+                  </span>
+                  <span class="value text-muted text-center">value: 50$</span>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-9">
+            <div class="row gy-4 product-content">
+              <!-- <div class="col-12 col-md-6 col-xl-4">
+                <div class="card shadow features-card">
+                  <div class="card-body">
+                    <div class="card-img-top">
+                      <img
+                        class="card-img-top"
+                        src="./images/mobile.jpeg"
+                        alt="product iamges"
+                      />
+                    </div>
+                    <div
+                      class="card-title text-center h3 fw-normal text-muted mt-1"
+                    >
+                      Product1
+                    </div>
+                    <div class="card-text text-center">
+                      <span class="h4 text-center">99.99$</span>
+                    </div>
+                  </div>
+                  <div class="features-icons">
+                    <div
+                      class="f-icons d-flex justify-content-between align-items-center"
+                    >
+                      <span
+                        class="tt"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Add to cart"
+                        ><a href="#"
+                          ><i class="bi bi-plus-circle rounded-circle me-4"></i
+                        ></a>
+                      </span>
+                      <span
+                        class="tt"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Search product"
+                        ><a href="product.html?id='?'"
+                          ><i class="bi bi-search rounded-circle ms-4"></i
+                        ></a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end product -->
+    <!-- start loader -->
+    <div
+      class="products-loader align-items-center position-absolute top-0 left-0 d-flex justify-content-center w-100 h-100"
+    >
+      <h1 class="h1 text-primary">
+        Loading
+        <span class="mx-3 load text-center"
+          ><i class="bi bi-arrow-repeat"></i
+        ></span>
+      </h1>
+    </div>
+    <!-- end loader  -->
+  </body>
