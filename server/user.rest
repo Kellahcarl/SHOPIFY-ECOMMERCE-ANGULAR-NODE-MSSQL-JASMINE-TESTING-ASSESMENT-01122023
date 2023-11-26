@@ -4,7 +4,6 @@ Content-Type: application/json
 
 {
     "user_name": "jonathan",
-    "cohort_number" : 20,
     "email":"caleb.baraka@thejitu.com",
     "password": "@Santa2023"
 }
@@ -12,11 +11,11 @@ Content-Type: application/json
 #####get all users
 
 get http://localhost:4100/user
-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6InN5bHZpYSBNb2d1dHUiLCJlbWFpbCI6InNpbHZpYTNAdGhlaml0dS5jb20iLCJpZCI6ImE5YTVlZTBiLWM4MmEtNGRmZC04MjQ1LTExN2JjMmM5ZmQ4YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDA3MzYyNTEsImV4cCI6MTcwMDgyMjY1MX0.1IGaVnvkJtu3Xn9GJuqiJ66ie8oy3eYWZyNYDrR5ri8
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
 
 #####get one user by id
-get http://localhost:4100/user/766d395f-fd79-4b81-930c-14a1c32cb3d2
-token :eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6InN5bHZpYSBNb2d1dHUiLCJlbWFpbCI6InNpbHZpYTNAdGhlaml0dS5jb20iLCJpZCI6ImE5YTVlZTBiLWM4MmEtNGRmZC04MjQ1LTExN2JjMmM5ZmQ4YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDA3MzYyNTEsImV4cCI6MTcwMDgyMjY1MX0.1IGaVnvkJtu3Xn9GJuqiJ66ie8oy3eYWZyNYDrR5ri8
+get http://localhost:4100/user/28e61f6e-e838-41c7-a155-380a84d78871
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
 
 ####login user
 
@@ -26,25 +25,45 @@ Content-Type: application/json
 {
     
     "email":"caleb.baraka@thejitu.com",
-    "password": "@Santa2023"
+    "password": "@Qwerty123"
 }
 #####update user
 
 put http://localhost:4100/user
-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6InN5bHZpYSBNb2d1dHUiLCJlbWFpbCI6InNpbHZpYTNAdGhlaml0dS5jb20iLCJpZCI6ImE5YTVlZTBiLWM4MmEtNGRmZC04MjQ1LTExN2JjMmM5ZmQ4YyIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDA0MzIzNTcsImV4cCI6MTcwMDUxODc1N30.wUxqgPQ-I8h9Aa0v5zX5RVTEtv4j1_tDpZfh7J64Unw
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
 Content-Type: application/json
 
 {
-     "cohort_number" : 20,
-    "club_id":"1a913633-c923-4228-8efd-a77512565eb1",
+    
+    "user_id":"28e61f6e-e838-41c7-a155-380a84d78871",
     "user_name": "caleb",
     "email":"baraka606@student.mmarau.ac.ke"
 }
 
 
 ##### delete user by ID
-delete http://localhost:4100/user/1a913633-c923-4228-8efd-a77512565eb1
-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6InN5bHZpYSBNb2d1dHUiLCJlbWFpbCI6InNpbHZpYTNAdGhlaml0dS5jb20iLCJpZCI6IjFmYzNiYzkwLWRjMjctNDFmOC05MDgwLWUxY2VkN2E4MzYyZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDAwMzYyODIsImV4cCI6MTcwMDEyMjY4Mn0.3fh_c9gfiklWZXLRCOFDl_RcVg3MrsLbUG4hk3yP1Mo
+delete http://localhost:4100/user/28e61f6e-e838-41c7-a155-380a84d78871
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
 
+### check user details
+get http://localhost:4100/user/check_user_details
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6InN5bHZpYSBNb2d1dHUiLCJlbWFpbCI6InNpbHZpYTNAdGhlaml0dS5jb20iLCJpZCI6IjFmYzNiYzkwLWRjMjctNDFmOC05MDgwLWUxY2VkN2E4MzYyZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDAwMzYyODIsImV4cCI6MTcwMDEyMjY4Mn0.3fh_c9gfiklWZXLRCOFDl_RcVg3MrsLbUG4hk3yP1Mo
+
+#### forgot password
+post http://localhost:4100/user/forgot
+Content-Type: application/json
+
+{
+    "email":"caleb.baraka@thejitu.com"
+}
+
+##### reset password
+post http://localhost:4100/user/reset
+Content-Type: application/json
+
+{
+    "user_id" : "466782fb-fea3-4d1a-9980-9c150105962e",
+    "password" : "@Qwerty123"
+}
 
 

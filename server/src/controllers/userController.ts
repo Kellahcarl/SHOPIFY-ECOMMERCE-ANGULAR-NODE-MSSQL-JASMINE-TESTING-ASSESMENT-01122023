@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { execute, query } from "../services/dbconnect";
-
-import _ from "lodash";
 import { v4 as uuidv4 } from "uuid";
 import { updatUser, user } from "../types/userInterfaces";
 import { generateToken } from "../services/tokenGenerator";
 import {
   validateLoginUser,
   validateRegisterUser,
+  validateResetpassword,
   validateUpdateuser,
+  validateUserEmail,
   validateuserId,
 } from "../validators/userValidator";
 import { comparePass, hashPass } from "../services/passwordHash";
@@ -25,9 +25,9 @@ export const getUsers = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
   try {
-    const club_id = req.params.club_id;
-    // console.log(club_id);
-    if (!club_id) return res.status(400).send({ message: "Id is required" });
+    const user_id = req.params.user_id;
+    // console.log(user_id);
+    if (!user_id) return res.status(400).send({ message: "Id is required" });
 
     const { error } = validateuserId.validate(req.params);
 
@@ -37,7 +37,7 @@ export const getUser = async (req: Request, res: Response) => {
         .send({ success: false, message: error.details[0].message });
 
     const procedureName = "getUserById";
-    const result = await execute(procedureName, { club_id });
+    const result = await execute(procedureName, { user_id });
 
     res.json(result.recordset[0]);
   } catch (error) {
@@ -47,18 +47,17 @@ export const getUser = async (req: Request, res: Response) => {
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { user_name, password, email,cohort_number } = req.body;
+    const { user_name, password, email } = req.body;
 
     // console.log(req.body);
 
     const { error } = validateRegisterUser.validate(req.body);
     // console.log(error);
-    
 
     if (error)
       return res.status(400).json({
         error:
-          "check email or password ! password should be atleast 8 characters long with letters symbols and uppercase , email should be firstname.lastname@thejitu.com",
+          "check email or password ! password should be atleast 8 characters long with letters symbols and uppercase letters",
       });
 
     const procedure1 = "getUserByEmail";
@@ -79,11 +78,10 @@ export const registerUser = async (req: Request, res: Response) => {
     // console.log(userWithEmail);
 
     const newUser: user = {
-      club_id: uuidv4(),
+      user_id: uuidv4(),
       user_name,
       email,
       password: newPassword,
-      cohort_number,
     };
 
     const procedureName = "registerUser";
@@ -128,8 +126,8 @@ export const loginUser = async (req: Request, res: Response) => {
 
       const token = generateToken(
         user.email,
-        user._id,
-        user.fullName,
+        user.user_id,
+        user.user_Name,
         user.isAdmin
       );
       return res.status(200).json({
@@ -146,7 +144,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    const { club_id, user_name, email,cohort_number } = req.body;
+    const { user_id, user_name, email } = req.body;
 
     const { error } = validateUpdateuser.validate(req.body);
     if (error)
@@ -155,10 +153,9 @@ export const updateUser = async (req: Request, res: Response) => {
         .send({ error: "check full name & email if they are correct" });
 
     const newUser: updatUser = {
-      club_id,
+      user_id,
       user_name,
       email,
-      cohort_number,
     };
 
     const procedureName = "updateUser";
@@ -178,19 +175,106 @@ export const updateUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    const club_id = req.params.club_id;
+    const user_id = req.params.user_id;
     // console.log(id);
-    if (!club_id) return res.status(400).send({ error: "Id is required" });
+    if (!user_id) return res.status(400).send({ error: "Id is required" });
 
     const { error } = validateuserId.validate(req.params);
 
     if (error) return res.status(400).send({ error: "Id is required" });
 
     const procedureName = "deleteUser";
-    await execute(procedureName, { club_id });
+    await execute(procedureName, { user_id });
 
     res.status(201).send({ message: "User deleted Successfully" });
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const forgotPassword = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) return res.status(400).send({ message: "email is required" });
+
+    const { error } = validateUserEmail.validate(req.body);
+
+    if (error) {
+      return res.status(400).send({ error: "enter a valid email" });
+    }
+
+    const procedure1 = "getUserByEmail";
+    const result = await execute(procedure1, { email });
+
+    const userWithEmail = result.recordset[0];
+
+    if (!userWithEmail)
+      return res.status(404).send({ error: "Invalid Email Provided " });
+
+    const procedureName = "forgotPassword";
+    await execute(procedureName, { user_id: userWithEmail.user_id });
+
+    res
+      .status(201)
+      .send({ message: "check your email for a password reset link" });
+  } catch (error) {
+    console.log(error);
+    res.send({ error: (error as Error).message });
+  }
+};
+
+export const resetPassword = async (req: Request, res: Response) => {
+  try {
+    const { user_id, password } = req.body;
+    // console.log(req.body);
+
+    if (!user_id) return res.status(400).send({ error: "id is required" });
+    if (!password)
+      return res.status(400).send({ error: "password is required" });
+
+    const { error } = validateResetpassword.validate(req.body);
+
+    if (error) {
+      return res.status(400).send({
+        error:
+          "check correct Email or password should be atleast 8 characters long with letters symbols and uppercase",
+      });
+    }
+
+    const procedure1 = "getUserById";
+    const result = await execute(procedure1, { user_id });
+
+    const userWithId = result.recordset[0];
+
+    if (!userWithId)
+      return res
+        .status(404)
+        .send({ error: "User Doesn't Exist" });
+
+    const newPassword = await hashPass(password);
+
+    const params = {
+      user_id: userWithId.user_id,
+      password: newPassword,
+    };
+
+    const procedureName = "resetPassword";
+
+    await execute(procedureName, params);
+
+    res.send({ message: "Password Updated succesfully" });
+  } catch (error) {
+    console.log(error);
+    res.send({ error: (error as Error).message });
+  }
+};
+
+export const checkUserDetails = async (request: any, res: Response) => {
+  // console.log("checking details");
+  if (request.info) {
+    return res.json({
+      info: request.info,
+    });
   }
 };

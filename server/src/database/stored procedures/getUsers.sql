@@ -4,10 +4,9 @@ as
 set nocount on;
 
 begin
-	select	u.[club_id],
+	select	u.[user_id],
 			u.user_name,
-			u.email,
-			u.cohort_number 
+			u.email		
 
 	from	[users] u where isDeleted = 0 
 end;
