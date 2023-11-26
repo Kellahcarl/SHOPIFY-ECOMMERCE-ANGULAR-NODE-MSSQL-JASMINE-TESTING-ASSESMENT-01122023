@@ -9,6 +9,7 @@ import express, {
 import dotenv from "dotenv";
 import cors from "cors";
 import user_router from "./routes/userRouter";
+import product_router from "./routes/productRouter";
 
 
 
@@ -20,6 +21,7 @@ app.use(json());
 app.use(cors());
 
 app.use("/user", user_router);
+app.use("/product", product_router);
 
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {

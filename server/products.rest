@@ -1,0 +1,41 @@
+
+### create a product
+POST http://localhost:4100/product
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+Content-Type: application/json
+
+{
+    "title":"jeans", 
+     "price" : 150, 
+     "image": "ksbhadsfvbf", 
+     "category": "men",
+     "description": "good jeans", 
+     "stock": 100
+}
+
+### get all products
+GET http://localhost:4100/product
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+
+#### get a product
+GET http://localhost:4100/product/135172ea-41d6-4e93-853a-05b191d96422
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+
+### update a product
+PUT http://localhost:4100/product/
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+Content-Type: application/json
+
+{
+    "product_id": "135172ea-41d6-4e93-853a-05b191d96422",
+    "title":"jeans", 
+     "price" : 200, 
+     "image": "ksbhadsfvbf", 
+     "category": "men",
+     "description": "good jeans", 
+     "stock": 100
+}
+
+#### delete a product
+DELETE http://localhost:4100/product/135172ea-41d6-4e93-853a-05b191d96422
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
