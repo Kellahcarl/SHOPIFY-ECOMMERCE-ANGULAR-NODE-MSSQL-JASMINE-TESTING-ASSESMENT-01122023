@@ -3,8 +3,8 @@ post http://localhost:4100/user/register
 Content-Type: application/json
 
 {
-    "user_name": "jonathan",
-    "email":"caleb.baraka@thejitu.com",
+    "user_name": "diana",
+    "email":"dianaaberi9@gmail.com",
     "password": "@Santa2023"
 }
 

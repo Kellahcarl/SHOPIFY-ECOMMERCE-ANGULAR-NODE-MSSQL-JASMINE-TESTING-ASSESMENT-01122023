@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import { sendMail } from "../services/email";
 import { query } from "../services/dbconnect";
+import path from 'path';
 
 dotenv.config();
 
@@ -15,8 +16,8 @@ export const forgetPassword = async () => {
 
   for (let user of users) {
     ejs.renderFile(
-      "templates/forgotPassword.ejs",
-      { Name: user.name ,code: user._id },
+      path.join(__dirname,"templates/forgotPassword.ejs"),
+      { Name: user.user_name ,code: user.user_id },
       async (error, data) => {
         let mailOptions = {
           from: process.env.EMAIL as string,

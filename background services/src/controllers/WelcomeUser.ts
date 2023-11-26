@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import { sendMail } from "../services/email";
 import { query } from "../services/dbconnect";
+import path from 'path';
 
 dotenv.config();
 
@@ -14,11 +15,13 @@ export const welcomeUser = async () => {
   console.log(users);
 
   for (let user of users) {
+    console.log(user);
+    
     ejs.renderFile(
-      "templates/welcomeUser.ejs",
-      { Name: user.name },
+      path.join(__dirname,"../templates/welcomeUser.ejs"),
+      { Name: user.user_name },
       async (error, data) => {
-      console.log(error)
+      console.log(data)
         let mailOptions = {
           from: process.env.EMAIL as string,
           to: user.email,
