@@ -8,7 +8,7 @@ begin
 	select	user_id,
 			email,
 			user_name,
-					
+			isAdmin,
 			password
 	FROM	users  WHERE email = @email AND isDeleted = 0;
 end;

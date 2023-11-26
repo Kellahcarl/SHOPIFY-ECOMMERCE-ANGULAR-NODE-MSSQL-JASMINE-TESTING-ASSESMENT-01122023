@@ -114,6 +114,9 @@ export const loginUser = async (req: Request, res: Response) => {
       const recordset = result.recordset;
       const user = recordset[0];
 
+      console.log(user);
+      
+
       if (!user) {
         return res.status(404).json({ error: "Account does not exist" });
       }
@@ -127,7 +130,7 @@ export const loginUser = async (req: Request, res: Response) => {
       const token = generateToken(
         user.email,
         user.user_id,
-        user.user_Name,
+        user.user_name,
         user.isAdmin
       );
       return res.status(200).json({

@@ -22,8 +22,7 @@ token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGV
 post http://localhost:4100/user/login
 Content-Type: application/json
 
-{
-    
+{    
     "email":"caleb.baraka@thejitu.com",
     "password": "@Qwerty123"
 }
@@ -47,7 +46,7 @@ token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGV
 
 ### check user details
 get http://localhost:4100/user/check_user_details
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsTmFtZSI6InN5bHZpYSBNb2d1dHUiLCJlbWFpbCI6InNpbHZpYTNAdGhlaml0dS5jb20iLCJpZCI6IjFmYzNiYzkwLWRjMjctNDFmOC05MDgwLWUxY2VkN2E4MzYyZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDAwMzYyODIsImV4cCI6MTcwMDEyMjY4Mn0.3fh_c9gfiklWZXLRCOFDl_RcVg3MrsLbUG4hk3yP1Mo
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJqb25hdGhhbiIsImVtYWlsIjoiY2FsZWIuYmFyYWthQHRoZWppdHUuY29tIiwidXNlcl9pZCI6IjQ2Njc4MmZiLWZlYTMtNGQxYS05OTgwLTljMTUwMTA1OTYyZSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDA5OTY5MjYsImV4cCI6MTcwMTA4MzMyNn0.5qaeqGuj6Z8CJXU6M5-83jMFbmc5Nyem4vedUHughIo
 
 #### forgot password
 post http://localhost:4100/user/forgot
