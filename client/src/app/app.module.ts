@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    AdminComponent,
+    DeleteProductComponent,
+    EditProductComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
