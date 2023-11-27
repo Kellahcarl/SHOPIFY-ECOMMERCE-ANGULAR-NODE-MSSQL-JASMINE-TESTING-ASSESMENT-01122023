@@ -102,51 +102,62 @@
     </div>
     <div class="offcanvas-body py-5">
       <h1 class="h5">Your Bag:</h1>
-      <h2 class="h5 cart-emty-msg">Your cart is empty</h2>
-      <div class="cart-content">
-        <!-- <article
-        class="row justify-content-start align-items-center border border-3 border-top-0 border-start-0 border-end-0"
-      >
-        <div class="col-4">
-          <img src="./images/1.jpg" alt="Product image" class="img-fluid" />
-        </div>
-        <div
-          class="col-8 ps-2 align-items-end d-flex justify-content-between align-items-center"
+      <h2 *ngIf="cartItems.length === 0" class="h5 cart-emty-msg">
+        Your cart is empty
+      </h2>
+      <div *ngIf="cartItems.length > 0" class="cart-content">
+        <article
+          *ngFor="let item of cartItems"
+          class="row justify-content-start align-items-center border border-3 border-top-0 border-start-0 border-end-0"
         >
-          <div class="text d-inline-block">
-            <h1 class="fs-5 product-name-cart mb-0">Product 1</h1>
-            <p class="text-muted mb-1 cart-price">price$</p>
-            <span class="fs-6 fw-bold text-decoration-underline"
-              >Remove</span
-            >
+          <div class="col-4">
+            <img [src]="item.image" alt="{{ item.name }}" class="img-fluid" />
           </div>
           <div
-            class="flex-column d-inline-flex justify-content-center align-items-end"
+            class="col-8 ps-2 align-items-end d-flex justify-content-between align-items-center"
           >
-            <button
-              type="button"
-              class="d-flex justify-content-center align-items-center text-primary btn cart-increase"
+            <div class="text d-inline-block">
+              <h1 class="fs-5 product-name-cart mb-0">{{ item.name }}</h1>
+              <p class="text-muted mb-1 cart-price">
+                {{ item.price | currency }}
+              </p>
+              <span
+                class="fs-6 fw-bold text-decoration-underline"
+                (click)="removeFromCart(item)"
+                >Remove</span
+              >
+            </div>
+            <div
+              class="flex-column d-inline-flex justify-content-center align-items-end"
             >
-              <i class="bi bi-chevron-compact-up"></i>
-            </button>
-            <button
-              type="button"
-              class="d-flex justify-content-center align-items-center btn cart-amount"
-            >
-              1
-            </button>
-            <button
-              type="button"
-              class="d-flex justify-content-center align-items-center btn text-primary cart-decrease"
-            >
-              <i class="bi bi-chevron-compact-down"></i>
-            </button>
+              <button
+                type="button"
+                class="d-flex justify-content-center align-items-center text-primary btn cart-increase"
+                (click)="increaseQuantity(item)"
+              >
+                <i class="bi bi-chevron-compact-up"></i>
+              </button>
+              <button
+                type="button"
+                class="d-flex justify-content-center align-items-center btn cart-amount"
+              >
+                {{ item.quantity }}
+              </button>
+              <button
+                type="button"
+                class="d-flex justify-content-center align-items-center btn text-primary cart-decrease"
+                (click)="decreaseQuantity(item)"
+              >
+                <i class="bi bi-chevron-compact-down"></i>
+              </button>
+            </div>
           </div>
-        </div>
-      </article> -->
+        </article>
       </div>
-      <div class="cart-footer fw-bold fs-3 hide">Total: <span>20£</span></div>
-      <div class="w-100 position-relative">
+      <div *ngIf="cartItems.length > 0" class="cart-footer fw-bold fs-3">
+        Total: <span>{{ calculateTotal() | currency }}</span>
+      </div>
+      <div *ngIf="cartItems.length > 0" class="w-100 position-relative">
         <button
           class="btn-primary btn-lg d-block mx-auto hide checkout w-75 mt-3"
         >
@@ -247,9 +258,9 @@
                     }}</span>
                   </div>
                   <div class="card-text text-center">
-                    <span class="h6 text-center"> stock available :{{
-                      product.stock
-                    }} pcs</span>
+                    <span class="h6 text-center">
+                      stock available :{{ product.stock }} pcs</span
+                    >
                   </div>
                 </div>
                 <div class="features-icons">
@@ -261,7 +272,7 @@
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Add to cart"
-                      (click) = "clickAddToCart(product.product_id)"
+                      (click)="clickAddToCart(product)"
                     >
                       <i
                         class="bi bi-plus-circle rounded-circle me-4"
