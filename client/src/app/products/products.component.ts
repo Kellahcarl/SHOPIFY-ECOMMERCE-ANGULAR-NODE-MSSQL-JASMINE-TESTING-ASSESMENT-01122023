@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/productService';
 import { ProductService } from '../services/product.service';
 
@@ -7,42 +7,49 @@ import { ProductService } from '../services/product.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
+  searchTerms: string = '';
+  
   isLoading: boolean = true;
   token = localStorage.getItem('token');
   cartItems: any[] = [];
 
   products: Product[] = [];
+  filteredProducts: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.fetchproducts();
-    const cartString = localStorage.getItem('cart');
-    this.cartItems = cartString ? JSON.parse(cartString) : [];
-
-     this.updateCartCount();
+    this.fetchProducts();
+    this.loadCart();
   }
 
-  fetchproducts = async () => {
+  loadCart() {
+    const cartString = localStorage.getItem('cart');
+    this.cartItems = cartString ? JSON.parse(cartString) : [];
+    this.updateCartCount();
+  }
+
+  fetchProducts = async () => {
     this.isLoading = true;
 
     if (!this.token) {
       console.error('Token not found.');
       return;
     }
+
     try {
       this.products = await this.productService.getAllProducts(this.token);
-      console.log(this.products);
 
       this.isLoading = false;
     } catch (error) {
       console.log(error);
-      this.isLoading = true;
+      this.isLoading = false;
     }
   };
 
-  clickAddToCart = (product: Product) => {
+
+  clickAddToCart(product: Product) {
     const cartString = localStorage.getItem('cart');
     const cartItems = cartString ? JSON.parse(cartString) : [];
 
@@ -51,13 +58,10 @@ export class ProductsComponent {
     );
 
     if (existingItem) {
-      // If the product is already in the cart, update the quantity
       if (existingItem.quantity < product.stock) {
-        // Set a limit for the quantity
         existingItem.quantity += 1;
       }
     } else {
-      // If the product is not in the cart, add it
       const cartProduct = {
         product_id: product.product_id,
         image: product.image,
@@ -71,10 +75,9 @@ export class ProductsComponent {
 
     localStorage.setItem('cart', JSON.stringify(cartItems));
 
-    // Update the cart count and total in the UI
     this.updateCartCount();
     this.updateCartTotal();
-  };
+  }
 
   updateCartCount() {
     const cartString = localStorage.getItem('cart');
@@ -97,7 +100,6 @@ export class ProductsComponent {
   }
 
   calculateTotal(): number {
-    // Calculate the total price of items in the cart
     return this.cartItems.reduce(
       (total, item) => total + item.price * item.quantity,
       0
@@ -106,7 +108,6 @@ export class ProductsComponent {
 
   increaseQuantity(item: any) {
     if (item.quantity < 10) {
-      // Set a limit for the quantity
       item.quantity += 1;
       localStorage.setItem('cart', JSON.stringify(this.cartItems));
       this.updateCartTotal();

@@ -6,7 +6,7 @@ CREATE OR ALTER PROCEDURE [dbo].[createProduct]
 	@description varchar(250) ,
 	@image varchar(500),
     @price int,
-    @category varchar(100),
+    
     @stock int   )
 AS
 
@@ -19,7 +19,7 @@ BEGIN
       price,
       image,      
       description,
-      category,
+     
       stock
       )
     VALUES
@@ -28,6 +28,6 @@ BEGIN
 	@price ,
 	@image ,
     @description,
-    @category ,
+    
     @stock)
 END

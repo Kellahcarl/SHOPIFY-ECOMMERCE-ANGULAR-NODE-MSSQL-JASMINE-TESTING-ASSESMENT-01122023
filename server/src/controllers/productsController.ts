@@ -2,12 +2,16 @@ import { Request, Response } from "express";
 import { execute, query } from "../services/dbconnect";
 
 import { v4 as uuidv4 } from "uuid";
-import {  Product } from "../types/productInterface";
-import { validateProduct, validateProductId, validateUpdateProduct } from "../validators/productValidator";
+import { Product } from "../types/productInterface";
+import {
+  validateProduct,
+  validateProductId,
+  validateUpdateProduct,
+} from "../validators/productValidator";
 
 export const createProduct = async (req: Request, res: Response) => {
   try {
-    const { title,  price, image, category, description , stock} = req.body;
+    const { title, price, image, description, stock } = req.body;
 
     // console.log(req.body);
 
@@ -23,9 +27,9 @@ export const createProduct = async (req: Request, res: Response) => {
       title,
       price,
       image,
-      category,
-        description,
-      stock
+
+      description,
+      stock,
     };
 
     const procedure = "createProduct";
@@ -40,15 +44,8 @@ export const createProduct = async (req: Request, res: Response) => {
 };
 export const updateProduct = async (req: Request, res: Response) => {
   try {
-    const {
-       product_id,
-      title,
-      price,
-      image,
-      category,
-        description,
-      stock
-    } = req.body;
+    const { product_id, title, price, image,  description, stock } =
+      req.body;
     // console.log(req.body);
 
     const { error } = validateUpdateProduct.validate(req.body);
@@ -56,16 +53,16 @@ export const updateProduct = async (req: Request, res: Response) => {
     // console.log(error);
 
     if (error)
-      return res.status(400).send({ error : "please put correct details" });
+      return res.status(400).send({ error: "please put correct details" });
 
-    const newProject: Product= {
+    const newProject: Product = {
       product_id,
       title,
       price,
       image,
-      category,
-        description,
-      stock
+      
+      description,
+      stock,
     };
 
     const ProcedureName = "updateProduct";
@@ -85,14 +82,11 @@ export const updateProduct = async (req: Request, res: Response) => {
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const product_id = req.params.product_id;
-    if (!product_id) return res.status(400).send({ error : "Id is required" });
+    if (!product_id) return res.status(400).send({ error: "Id is required" });
 
     const { error } = validateProductId.validate(req.params);
 
-    if (error)
-      return res
-        .status(400)
-        .send({ error: "please input id" });
+    if (error) return res.status(400).send({ error: "please input id" });
 
     const procedureName = "deleteProduct";
     await execute(procedureName, { product_id });
@@ -111,14 +105,11 @@ export const getProduct = async (req: Request, res: Response) => {
   try {
     const product_id = req.params.product_id;
     // console.log(product_id);
-    if (!product_id) return res.status(400).send({ error : "Id is required" });
+    if (!product_id) return res.status(400).send({ error: "Id is required" });
 
     const { error } = validateProductId.validate(req.params);
 
-    if (error)
-      return res
-        .status(400)
-        .send({ error : error.details[0].message });
+    if (error) return res.status(400).send({ error: error.details[0].message });
 
     const procedureName = "getProductById";
     const result = await execute(procedureName, { product_id });

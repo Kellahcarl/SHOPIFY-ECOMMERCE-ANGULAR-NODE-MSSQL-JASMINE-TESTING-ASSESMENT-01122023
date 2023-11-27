@@ -1,16 +1,15 @@
 
 ### create a product
 POST http://localhost:4100/product
-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJkaWFuYSIsImVtYWlsIjoiZGlhbmFhYmVyaTEyQGdtYWlsLmNvbSIsInVzZXJfaWQiOiIyZjQ0ZGM5Yi1hYjg2LTRhMmItOTg4OS1iM2NkOTVhZTM4MGYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAxMTIzNzE4LCJleHAiOjE3MDEyMTAxMTh9.yybwlN7YOYo15JJdDEZnvJqPA5hVd8-MeHSvOAkGKIg
 Content-Type: application/json
 
 {
-    "title":"checked Shirt", 
-     "price" : 100, 
-     "image": "https://images.unsplash.com/photo-1605794432120-f4bb5dc9067d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", 
-     "category": "men",
-     "description": "classic design", 
-     "stock": 100
+    "title":"frost all over", 
+     "price" : 120, 
+     "image": "https://images.unsplash.com/photo-1603319373788-680871da9246?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",      
+     "description": "winter is coming!", 
+     "stock": 20
 }
 
 ### get all products

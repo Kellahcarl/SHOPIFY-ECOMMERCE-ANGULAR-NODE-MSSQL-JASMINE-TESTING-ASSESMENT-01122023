@@ -4,7 +4,7 @@ CREATE or alter PROCEDURE [dbo].[updateProduct]
 	@description varchar(250) ,
 	@image varchar(500),
     @price int,
-    @category varchar(100) ,
+    
     @stock int )
 as
 
@@ -17,7 +17,7 @@ begin
       title = @title,
       price = @price,
       image = @image,
-      category = @category,
+     
       description = @description,
       stock = @stock
 	

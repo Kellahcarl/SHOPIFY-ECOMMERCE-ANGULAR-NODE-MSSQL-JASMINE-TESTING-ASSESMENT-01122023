@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "user_name": "diana",
-    "email":"dianaaberi9@gmail.com",
+    "email":"dianaaberi12@gmail.com",
     "password": "@Santa2023"
 }
 
@@ -23,8 +23,8 @@ post http://localhost:4100/user/login
 Content-Type: application/json
 
 {    
-    "email":"caleb.baraka@thejitu.com",
-    "password": "@Qwerty123"
+    "email":"dianaaberi12@gmail.com",
+    "password": "@Santa2023"
 }
 #####update user
 
