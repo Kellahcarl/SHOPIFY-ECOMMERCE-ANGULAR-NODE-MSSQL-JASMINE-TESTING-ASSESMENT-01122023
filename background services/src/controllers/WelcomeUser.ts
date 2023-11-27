@@ -21,7 +21,7 @@ export const welcomeUser = async () => {
       path.join(__dirname,"../templates/welcomeUser.ejs"),
       { Name: user.user_name },
       async (error, data) => {
-      console.log(data)
+      // console.log(data)
         let mailOptions = {
           from: process.env.EMAIL as string,
           to: user.email,

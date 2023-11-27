@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { LoginUser, ResetUser, UpdateUser, User, userImage } from '../types/userInterface';
+import {
+  ForgotUser,
+  LoginUser,
+  UpdateUser,
+  User,
+  userImage,
+} from '../types/userInterface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-
-  private apiUrl = 'http://localhost:4000/user';
+  private apiUrl = 'http://localhost:4100/user';
 
   async registerUser(userDetails: User): Promise<any> {
     const response = await fetch(`${this.apiUrl}/register`, {
@@ -102,8 +107,8 @@ export class UserService {
     return await response.json();
   }
 
-  async forgotPassword(userdetails: any): Promise<any> {
-    const response = await fetch(`${this.apiUrl}/forgot`, {
+  async resetPassword(userdetails: string): Promise<any> {
+    const response = await fetch(`${this.apiUrl}/reset`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -114,8 +119,8 @@ export class UserService {
     return await response.json();
   }
 
-  async resetPassword(resetDetails: ResetUser): Promise<any> {
-    const response = await fetch(`${this.apiUrl}/reset`, {
+  async forgotPassword(resetDetails: ForgotUser): Promise<any> {
+    const response = await fetch(`${this.apiUrl}/forgot`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

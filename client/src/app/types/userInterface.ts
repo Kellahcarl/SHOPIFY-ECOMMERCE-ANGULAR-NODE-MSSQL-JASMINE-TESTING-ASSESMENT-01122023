@@ -1,5 +1,5 @@
 export interface UpdateUser {
-  id: string;
+  user_id: string;
   fullName: string;
   email: string;
 }
@@ -9,13 +9,13 @@ export interface User {
   email: string;
 }
 
-export interface ResetUser {
-  id: string;
+export interface ForgotUser {
+  user_id: string;
   password: string;
 }
 
 export interface checkDetailsUser {
-  _id: string;
+  user_id: string;
   fullname: string;
   email: string;
 }

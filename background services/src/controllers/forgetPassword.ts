@@ -16,9 +16,11 @@ export const forgetPassword = async () => {
 
   for (let user of users) {
     ejs.renderFile(
-      path.join(__dirname,"templates/forgotPassword.ejs"),
+      path.join(__dirname,"../templates/forgotPassword.ejs"),
       { Name: user.user_name ,code: user.user_id },
       async (error, data) => {
+        
+        
         let mailOptions = {
           from: process.env.EMAIL as string,
           to: user.email,

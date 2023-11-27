@@ -198,6 +198,8 @@ export const deleteUser = async (req: Request, res: Response) => {
 export const forgotPassword = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
+    console.log(email);
+    
 
     if (!email) return res.status(400).send({ message: "email is required" });
 
