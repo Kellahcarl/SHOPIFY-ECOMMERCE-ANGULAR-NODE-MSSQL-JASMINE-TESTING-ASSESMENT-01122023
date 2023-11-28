@@ -14,6 +14,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { AdminComponent } from './admin/admin.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     AdminComponent,
     DeleteProductComponent,
     EditProductComponent,
+    NavComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
