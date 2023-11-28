@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -14,7 +13,14 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { AdminComponent } from './admin/admin.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './nav/nav.component'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +37,19 @@ import { NavComponent } from './nav/nav.component';
     DeleteProductComponent,
     EditProductComponent,
     NavComponent,
+
+    SearchFilterPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgxPageScrollCoreModule,
+    NgxPageScrollModule,
+
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
