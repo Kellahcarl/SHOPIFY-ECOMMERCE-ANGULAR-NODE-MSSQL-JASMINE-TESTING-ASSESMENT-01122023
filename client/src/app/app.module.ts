@@ -21,7 +21,6 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,10 +33,6 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
     ForgotPasswordComponent,
     ResetPasswordComponent,
     AdminComponent,
-    DeleteProductComponent,
-    EditProductComponent,
-    NavComponent,
-
     SearchFilterPipe,
   ],
   imports: [

@@ -20,9 +20,7 @@
           <li class="nav-item">
             <a routerLink="/products" class="nav-link">Products</a>
           </li>
-          <li class="nav-item">
-            <a routerLink="/#contact" class="nav-link">Contact</a>
-          </li>
+
         </ul>
       </nav>
       <div class="navbar-brand">
@@ -42,6 +40,9 @@
           class="rounded-circle bg-primary position-absolute count-icon top-0 end-0 d-flex justify-content-center align-items-center text-light"
           >0</span
         >
+      </div>
+      <div class="logout position-relative">
+        <a  class="nav-link mx-3 btn btn-danger" (click)="logout()">Log Out</a>
       </div>
     </div>
   </header>
@@ -76,11 +77,12 @@
             >Products</a
           >
         </li>
-        <li class="list-group-item border-0">
-          <a class="text-dark text-decoration-none fs-5" routerLink="/#contact"
-            >Contact</a
+         <li class="list-group-item border-0" >
+          <button type="button" class="text-dark text-decoration-none fs-5 btn btn-danger" (click)="logout()"
+            >Log Out</button
           >
         </li>
+
       </ul>
     </div>
   </div>
