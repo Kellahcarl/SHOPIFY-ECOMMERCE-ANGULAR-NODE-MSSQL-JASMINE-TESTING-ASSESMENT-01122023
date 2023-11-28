@@ -9,8 +9,8 @@ export class ProductService {
 
   private apiUrl = 'http://localhost:4100/product';
 
-  async createProduct(tourDetails: createProduct, token: string): Promise<any> {
-    console.log(tourDetails);
+  async createProduct(productDetails: createProduct, token: string): Promise<any> {
+    console.log(productDetails);
 
     const response = await fetch(`${this.apiUrl}/`, {
       method: 'POST',
@@ -18,7 +18,7 @@ export class ProductService {
         'Content-Type': 'application/json',
         token: token,
       },
-      body: JSON.stringify(tourDetails),
+      body: JSON.stringify(productDetails),
     });
 
     return await response.json();
@@ -35,8 +35,8 @@ export class ProductService {
     return await response.json();
   }
 
-  async getProductById(tourId: string, token: string): Promise<any> {
-    const response = await fetch(`${this.apiUrl}/${tourId}`, {
+  async getProductById(product_id: string, token: string): Promise<any> {
+    const response = await fetch(`${this.apiUrl}/${product_id}`, {
       method: 'GET',
       headers: {
         token: token,
@@ -46,21 +46,21 @@ export class ProductService {
     return await response.json();
   }
 
-  async updateProduct(tourDetails: Product, token: string): Promise<any> {
+  async updateProduct(productDetails: Product, token: string): Promise<any> {
     const response = await fetch(`${this.apiUrl}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         token: token,
       },
-      body: JSON.stringify(tourDetails),
+      body: JSON.stringify(productDetails),
     });
 
     return await response.json();
   }
 
-  async deleteProductById(tourId: string, token: string): Promise<any> {
-    const response = await fetch(`${this.apiUrl}/${tourId}`, {
+  async deleteProductById(product_id: string, token: string): Promise<any> {
+    const response = await fetch(`${this.apiUrl}/${product_id}`, {
       method: 'DELETE',
       headers: {
         token: token,
