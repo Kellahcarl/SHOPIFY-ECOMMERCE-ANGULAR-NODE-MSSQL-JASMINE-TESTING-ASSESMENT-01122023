@@ -55,21 +55,18 @@ export class LoginComponent {
 
             if ('info' in data) {
               if (data.info.isAdmin === true) {
-                localStorage.setItem('fullName', data.info.fullName!);
-                localStorage.setItem('user_id', data.info.id);
+                localStorage.setItem('user_name', data.info.user_name!);
+                localStorage.setItem('user_id', data.info.user_id);
                 localStorage.setItem('isAdmin', 'true');
                 this.router.navigate(['/admin']);
               } else if (data.info.isAdmin === false) {
                 localStorage.setItem('isAdmin', 'false');
-                localStorage.setItem('fullName', data.info.fullName!);
-                localStorage.setItem('user_id', data.info.id);
-                this.router.navigate(['/user']);
+                localStorage.setItem('user_name', data.info.user_name!);
+                localStorage.setItem('user_id', data.info.user_id);
+                this.router.navigate(['/products']);
               }
             }
           });
-          setTimeout(() => {
-            // this.router.navigate(['/'])
-          }, 5000);
         }
         if (response.error) {
           Swal.fire({

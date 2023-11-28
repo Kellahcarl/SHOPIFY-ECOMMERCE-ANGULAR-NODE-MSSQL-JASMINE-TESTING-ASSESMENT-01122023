@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AdminGuard, AuthGuard } from './services/auth.service';
 
 const routes: Routes = [
   {
@@ -17,12 +18,14 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductComponent,
+
   },
   {
     path: 'products',
     component: ProductsComponent,
+    
   },
-  { path: 'about', component: AboutComponent },
+  { path: 'about', component: AboutComponent, },
   {
     path: 'login',
     component: LoginComponent,

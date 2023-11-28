@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Product } from '../types/productService';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private authservice : AuthService
   ) {}
 
   ngOnInit() {
@@ -30,6 +32,10 @@ export class ProductComponent implements OnInit {
       this.fetchProductDetails();
       this.loadCart();
     });
+  }
+
+  logout(){
+    this.authservice.logout();
   }
 
   async fetchProductDetails() {

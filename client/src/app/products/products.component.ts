@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/productService';
 import { ProductService } from '../services/product.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -17,11 +18,15 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private authservice : AuthService) {}
 
   ngOnInit() {
     this.fetchProducts();
     this.loadCart();
+  }
+
+  logout() {
+    this.authservice.logout();
   }
 
   loadCart() {
