@@ -9,7 +9,7 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductsComponent implements OnInit {
   searchTerms: string = '';
-  
+
   isLoading: boolean = true;
   token = localStorage.getItem('token');
   cartItems: any[] = [];
@@ -47,7 +47,6 @@ export class ProductsComponent implements OnInit {
       this.isLoading = false;
     }
   };
-
 
   clickAddToCart(product: Product) {
     const cartString = localStorage.getItem('cart');
@@ -107,7 +106,7 @@ export class ProductsComponent implements OnInit {
   }
 
   increaseQuantity(item: any) {
-    if (item.quantity < 10) {
+    if (item.quantity <  item.stock) {
       item.quantity += 1;
       localStorage.setItem('cart', JSON.stringify(this.cartItems));
       this.updateCartTotal();

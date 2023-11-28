@@ -177,89 +177,88 @@
         </ol>
       </nav>
     </div>
-    <div class="container">
-      <form action="#" class="search-form">
-        <div class="input-group">
-          <input
-            type="search"
-            name="search"
-            id="search"
-            placeholder="Search ..."
-            class="mw-100 form-control"
-            [(ngModel)]="searchTerms"
-          />
-          <button class="btn btn-primary search-btn" type="submit">
-            <i class="bi bi-search"></i>
-          </button>
-        </div>
-      </form>
-    </div>
   </section>
   <!-- end hero -->
   <!-- start products -->
 
-  <section class="products py-2">
+  <section class="products py-5">
     <div class="container-lg">
-      <div class="row">
-        <div class="row gy-4 product-content">
-          <div
-            class="col-12 col-md-6 col-lg-4 col-sm-12"
+      <div class="row gy-4">
+        <form action="#" class="search-form">
+          <div class="input-group">
+            <input
+              type="search"
+              name="search"
+              id="search"
+              placeholder="Search ..."
+              class="mw-100 form-control"
+              [(ngModel)]="searchTerms"
+            />
+            <button class="btn btn-primary search-btn" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
 
-            *ngFor="let product of products | searchFilter : searchTerms"
-          >
-            <div class="card shadow features-card">
-              <div class="card-body" >
-                <div class="card-img-top">
-                  <img
-                    
-                    class="card-img-top"
-                    src="{{ product.image }}"
-                    alt="{{ product.title }}"
-                  />
-                </div>
-                <div
-                  class="card-title text-center h3 fw-normal text-muted mt-1"
-                >
-                  {{ product.title }}
-                </div>
-                <div class="card-text text-center">
-                  <span class="h4 text-center">{{
-                    product.price | currency
-                  }}</span>
-                </div>
-                <div class="card-text text-center">
-                  <span class="h6 text-center">
-                    stock available :{{ product.stock }} pcs</span
+        <div class="col-12 col-lg-9">
+          <div class="row gy-4 product-content">
+            <div
+              class="col-12 col-md-6 col-xl-4"
+              *ngFor="let product of products | searchFilter : searchTerms"
+            >
+              <div class="card shadow features-card">
+                <div class="card-body">
+                  <div class="card-img-top">
+                    <img
+                      class="card-img-top rounded"
+                      src="{{ product.image }}"
+                      alt="{{ product.title }}"
+                    />
+                  </div>
+                  <div
+                    class="card-title text-center h3 fw-normal text-muted mt-1"
                   >
+                    {{ product.title }}
+                  </div>
+                  <div class="card-text text-center mt-1">
+                    <span class="h4 text-center ">{{
+                      product.price | currency
+                    }}</span>
+                  </div>
+                  <div class="card-text text-center mt-1">
+                    <span class="h6 text-center">
+                      stock available :{{ product.stock }} pcs</span
+                    >
+                  </div>
                 </div>
-              </div>
-              <div class="features-icons">
-                <div
-                  class="f-icons d-flex justify-content-between align-items-center"
-                >
-                  <span
-                    class="tt"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Add to cart"
-                    (click)="clickAddToCart(product)"
+                <div class="features-icons">
+                  <div
+                    class="f-icons d-flex justify-content-between align-items-center"
                   >
-                    <i
-                      class="bi bi-plus-circle rounded-circle me-4"
-                      data-bs-toggle="offcanvas"
-                      data-bs-target="#cart"
-                      aria-controls="offcanvasRight"
-                    ></i>
-                  </span>
-                  <span
-                    class="tt"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="Search product"
-                    ><a routerLink="/product?id={{ product.product_id }}"
-                      ><i class="bi bi-search rounded-circle ms-4"></i
-                    ></a>
-                  </span>
+                    <span
+                      class="tt"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Add to cart"
+                      (click)="clickAddToCart(product)"
+                    >
+                      <i
+                        class="bi bi-plus-circle rounded-circle me-4"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#cart"
+                        aria-controls="offcanvasRight"
+                      ></i>
+                    </span>
+                    <span
+                      class="tt"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Search product"
+                      ><a routerLink="/product/{{ product.product_id }}"
+                        ><i class="bi bi-search rounded-circle ms-4"></i
+                      ></a>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
