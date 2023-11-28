@@ -10,6 +10,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { NavComponent } from './nav/nav.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -29,6 +33,10 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
     RegisterComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    AdminComponent,
+    DeleteProductComponent,
+    EditProductComponent,
+    NavComponent,
 
     SearchFilterPipe,
   ],
@@ -40,6 +48,7 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
     CommonModule,
     NgxPageScrollCoreModule,
     NgxPageScrollModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

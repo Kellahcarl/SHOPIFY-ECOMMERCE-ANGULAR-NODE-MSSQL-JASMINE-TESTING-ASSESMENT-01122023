@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forgot', component: ForgotPasswordComponent },
   { path: 'reset', component: ResetPasswordComponent },
+  {path: 'admin', component:AdminComponent},
   { path: '**', redirectTo: '' },
+
 ];
 
 @NgModule({

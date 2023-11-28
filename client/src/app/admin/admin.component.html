@@ -1,0 +1,62 @@
+
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="profile">
+        <img class="im" src="https://www.seekpng.com/png/detail/110-1100707_person
+        -avatar-placeholder.png" width="70px" alt="Profile Picture">
+        <h4> <span>ADMIN</span></h4>
+       
+      </div>
+     
+      <div class="logout">
+        <a  routerLink="/" class="logout"> Logout</a>
+      </div>
+     
+    </div>
+    <div class="content">
+       <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search...">
+            <span class="search-icon"><i class="fas fa-search"></i></span>
+          </div>
+      <div class="card">
+        <h2>Add Product</h2>
+        <form>
+          <input type="text" name="name" placeholder="Product Name" required>
+          <textarea name="category" placeholder="category" required></textarea>
+          <input type="number" name="price" placeholder="Product Price" required>
+          <input type="text" name="image"  placeholder="image url" required>
+          <input type="text" placeholder="Description" required>
+          <button type="submit">Add product</button>
+        </form>
+
+        <div class="product-row">
+            <div class="product">
+              <img src="product1.jpg" alt="Product 1">
+              <div class="details">
+                <h3>Title 1</h3>
+                <p>Price: $10</p>
+                <p>Stock: 5</p>
+              </div>
+              <div class="actions">
+                <a href="#" class="edit">Edit</a>
+                <a href="#" class="delete">Delete</a>
+              </div>
+            </div>
+            <div class="product">
+              <img src="product2.jpg" alt="Product 2">
+              <div class="details">
+                <h3>Title 2</h3>
+                <p>Price: $20</p>
+                <p>Stock: 3</p>
+              </div>
+              <div class="actions">
+                <a href="#" class="edit">Edit</a>
+                <a href="#" class="delete">Delete</a>
+              </div>
+            </div>
+          </div>
+  </div>
+    </div>
+  </div>
+  
