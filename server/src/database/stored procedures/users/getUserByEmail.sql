@@ -5,10 +5,10 @@ as
 set nocount on;
 
 begin
-	select	club_id,
+	select	user_id,
 			email,
 			user_name,
-			cohort_number,			
+			isAdmin,
 			password
 	FROM	users  WHERE email = @email AND isDeleted = 0;
 end;

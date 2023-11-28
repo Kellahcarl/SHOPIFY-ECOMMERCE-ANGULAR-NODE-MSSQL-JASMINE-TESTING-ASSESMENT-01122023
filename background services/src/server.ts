@@ -12,12 +12,17 @@ import cors from "cors";
 
 import { welcomeUser } from "./controllers/WelcomeUser";
 import { forgetPassword } from "./controllers/forgetPassword";
+import path from 'path';
 dotenv.config();
 
 const app = express();
 app.use(urlencoded({ extended: true }));
 app.use(json());
 app.use(cors());
+
+
+app.set("views", path.join(__dirname, "templates"));
+app.set("view engine", "ejs");
 
 const run = async (): Promise<void> => {
 
@@ -43,11 +48,11 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   });
 });
 
-app.get("/", (req, res) => {
+app.get("/", (req : Request, res : Response) => {
   res.send({ status: "Ok", message: "Api!" });
 });
 
-app.get("*", (req, res) => {
+app.get("*", (req : Request, res: Response) => {
   res.status(404).send({ message: "Page not found" });
 });
 

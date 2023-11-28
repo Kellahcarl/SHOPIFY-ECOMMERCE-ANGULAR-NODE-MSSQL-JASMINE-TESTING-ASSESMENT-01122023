@@ -1,0 +1,40 @@
+
+### create a product
+POST http://localhost:4100/product
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJkaWFuYSIsImVtYWlsIjoiZGlhbmFhYmVyaTEyQGdtYWlsLmNvbSIsInVzZXJfaWQiOiIyZjQ0ZGM5Yi1hYjg2LTRhMmItOTg4OS1iM2NkOTVhZTM4MGYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAxMTIzNzE4LCJleHAiOjE3MDEyMTAxMTh9.yybwlN7YOYo15JJdDEZnvJqPA5hVd8-MeHSvOAkGKIg
+Content-Type: application/json
+
+{
+    "title":"winter clothing", 
+     "price" : 150, 
+     "image": "https://images.unsplash.com/photo-1528597788073-3bf9d20118ef?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",      
+     "description": "winter is coming!", 
+     "stock": 20
+}
+
+### get all products
+GET http://localhost:4100/product
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+
+#### get a product
+GET http://localhost:4100/product/135172ea-41d6-4e93-853a-05b191d96422
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+
+### update a product
+PUT http://localhost:4100/product/
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+Content-Type: application/json
+
+{
+    "product_id": "d779c7b6-ab6d-48d1-8d2b-f5287d7261f1ea-41d6-4e93-853a-05b191d96422",
+    "title":"Taxido", 
+     "price" : 200, 
+     "image": "https://images.unsplash.com/photo-1598808503746-f34c53b9323e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHN3ZWF0JTIwc2hpcnRzfGVufDB8fDB8fHww", 
+     "category": "men",
+     "description": "good suits", 
+     "stock": 100
+}
+
+#### delete a product
+DELETE http://localhost:4100/product/da50184b-bb5e-45d0-bbe2-6bd750fe86eb
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY

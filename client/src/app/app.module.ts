@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -11,6 +10,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+
 
 @NgModule({
   declarations: [
@@ -23,8 +29,18 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     RegisterComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+
+    SearchFilterPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgxPageScrollCoreModule,
+    NgxPageScrollModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
