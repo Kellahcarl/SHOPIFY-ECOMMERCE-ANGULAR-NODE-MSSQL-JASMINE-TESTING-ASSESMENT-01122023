@@ -14,6 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    NgxPageScrollCoreModule,
+    NgxPageScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

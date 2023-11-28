@@ -21,7 +21,7 @@
             <a routerLink="/products" class="nav-link">Products</a>
           </li>
           <li class="nav-item">
-            <a routerLink="/#contact" class="nav-link">Contact</a>
+            <a pageScrollhref="/contact" class="nav-link">Contact</a>
           </li>
         </ul>
       </nav>
@@ -181,8 +181,8 @@
   <!-- end hero -->
   <!-- start products -->
 
-  <section class="products py-5">
-    <div class="container-lg">
+  <section class="products py-2">
+    <div class="container">
       <div class="row gy-4">
         <form action="#" class="search-form">
           <div class="input-group">
@@ -200,10 +200,10 @@
           </div>
         </form>
 
-        <div class="col-12 col-lg-9">
+        <div class="col-12 ">
           <div class="row gy-4 product-content">
             <div
-              class="col-12 col-md-6 col-xl-4"
+              class=" col-12 col-md-6 col-xl-4"
               *ngFor="let product of products | searchFilter : searchTerms"
             >
               <div class="card shadow features-card">

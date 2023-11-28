@@ -106,7 +106,7 @@ export class ProductsComponent implements OnInit {
   }
 
   increaseQuantity(item: any) {
-    if (item.quantity <  item.stock) {
+    if (item.quantity < 20) {
       item.quantity += 1;
       localStorage.setItem('cart', JSON.stringify(this.cartItems));
       this.updateCartTotal();

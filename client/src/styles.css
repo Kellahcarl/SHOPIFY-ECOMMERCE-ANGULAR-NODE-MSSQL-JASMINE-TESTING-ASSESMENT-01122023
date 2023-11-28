@@ -14,8 +14,8 @@ body {
 .container {
   padding-left: 15px;
   padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 @media (min-width: 768px) {
@@ -33,6 +33,11 @@ body {
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
+  }
+}
+@media (min-width: 2000px) {
+  .container {
+    width: 1920px;
   }
 }
 
@@ -234,19 +239,22 @@ end   navbar
 .features-card {
   position: relative;
   transition: var(--main-transition);
-  min-height: 450px !important;
+  /* min-height: 300px !important; */
+}
+
+.features-card img {
+  height: 350px;
 }
 @media (min-width: 992px) {
   .features-card {
-    height: 650px !important;
-    max-height: 650px;
+    height: 500px !important;
   }
 }
 
 @media (max-width: 991px) {
   .features-card img {
     height: 250px !important;
-    max-height: 250px !important;
+    width: 100% !important;
   }
 }
 

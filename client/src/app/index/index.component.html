@@ -86,77 +86,8 @@
     </div>
   </div>
   <!--end sidebar menu -->
-  <!-- start cart -->
-  <div
-    class="offcanvas offcanvas-end"
-    tabindex="-1"
-    id="cart"
-    aria-labelledby="offcanvasRightLabel"
-  >
-    <div class="offcanvas-header">
-      <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
-    </div>
-    <div class="offcanvas-body py-5">
-      <h1 class="h5">Your Bag:</h1>
-      <h2 class="h5 cart-emty-msg">Your cart is empty</h2>
-      <div class="cart-content">
-        <!-- <article
-            class="row justify-content-start align-items-center border border-3 border-top-0 border-start-0 border-end-0"
-          >
-            <div class="col-4">
-              <img src="./images/1.jpg" alt="Product image" class="img-fluid" />
-            </div>
-            <div
-              class="col-8 ps-2 align-items-end d-flex justify-content-between align-items-center"
-            >
-              <div class="text d-inline-block">
-                <h1 class="fs-5 product-name-cart mb-0">Product 1</h1>
-                <p class="text-muted mb-1 cart-price">price$</p>
-                <span class="fs-6 fw-bold text-decoration-underline"
-                  >Remove</span
-                >
-              </div>
-              <div
-                class="flex-column d-inline-flex justify-content-center align-items-end"
-              >
-                <button
-                  type="button"
-                  class="d-flex justify-content-center align-items-center text-primary btn cart-increase"
-                >
-                  <i class="bi bi-chevron-compact-up"></i>
-                </button>
-                <button
-                  type="button"
-                  class="d-flex justify-content-center align-items-center btn cart-amount"
-                >
-                  1
-                </button>
-                <button
-                  type="button"
-                  class="d-flex justify-content-center align-items-center btn text-primary cart-decrease"
-                >
-                  <i class="bi bi-chevron-compact-down"></i>
-                </button>
-              </div>
-            </div>
-          </article> -->
-      </div>
-      <div class="cart-footer fw-bold fs-3 hide">Total: <span>20£</span></div>
-      <div class="w-100 position-relative">
-        <button
-          class="btn-primary btn-lg d-block mx-auto hide checkout w-75 mt-3"
-        >
-          Checkout
-        </button>
-      </div>
-    </div>
-  </div>
-  <!-- end cart -->
+
+
   <!-- start landing -->
   <section
     id="landing"
@@ -185,6 +116,7 @@
         class="content position-relative d-flex justify-content-center align-items-center"
       >
         <div
+         *ngIf="isLoading"
           class="features-loader position-absolute top-50 left-50 d-flex justify-content-center align-items-center"
         >
           <h1 class="h1 text-primary">
@@ -194,54 +126,32 @@
             ></span>
           </h1>
         </div>
-        <div
+        <div *ngIf="!isLoading"
           class="row justify-content-center align-items-center gy-4 features-content"
+
         >
-          <!-- <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let product of products.slice(0, 4)">
               <div class="card shadow features-card">
                 <div class="card-body">
                   <div class="card-img-top">
                     <img
                       class="card-img-top"
-                      src="./images/mobile.jpeg"
+                      src={{product.image}}
                       alt="product iamges"
                     />
                   </div>
                   <div
                     class="card-title text-center h3 fw-normal text-muted mt-1"
                   >
-                    Product1
+                   {{product.title}}
                   </div>
                   <div class="card-text text-center">
-                    <span class="h4 text-center">99.99$</span>
+                    <span class="h4 text-center">{{product.price | currency}}</span>
                   </div>
                 </div>
-                <div class="features-icons">
-                  <div
-                    class="f-icons d-flex justify-content-between align-items-center"
-                  >
-                    <span
-                      class="tt"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Add to cart"
-                      ><a routerLink="/#"
-                        ><i class="bi bi-plus-circle rounded-circle me-4"></i
-                      ></a>
-                    </span>
-                    <span
-                      class="tt"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Search product"
-                      ><a routerLink="/product?id='?'"
-                        ><i class="bi bi-search rounded-circle ms-4"></i
-                      ></a>
-                    </span>
-                  </div>
-                </div>
+
               </div>
-            </div> -->
+            </div>
         </div>
       </div>
       <a
@@ -252,111 +162,5 @@
     </div>
   </section>
   <!-- end features -->
-  <!-- start contact -->
-  <section class="contact py-5" id="contact">
-    <div class="container">
-      <div class="contact-text text-center h2 fw-bold mb-3">
-        <span class="text-primary me-1">/</span>Contact Us
-      </div>
-      <div class="row py-5">
-        <div class="col-12 col-md-6">
-          <div class="discount py-5">
-            <h2 class="h1 text-center text-primary fw-bold position-relative">
-              Ask For A Discount
-            </h2>
-            <img
-              src="../../assets/images/discount.png"
-              alt="discount"
-              class="img-fluid position-relative"
-            />
-          </div>
-        </div>
-        <div class="from col-12 col-md-6 align-items-center py-5">
-          <form action="#" class="contact-form">
-            <small class="text-dark">
-              The name should contains only one space
-              <span class="text-danger ms-3">(Required*)</span></small
-            >
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                class="form-control"
-                placeholder=" Your Name"
-                required
-              />
-              <label for="name" class="text-muted">Your Name</label>
-              <small class="name-error-msg text-danger hide"
-                >The name must contains only one space</small
-              >
-            </div>
-            <small>
-              We don't share your email adress with any other third-party<span
-                class="text-danger ms-3"
-                >(Required*)</span
-              ></small
-            >
-            <div class="form-floating mb-3">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                class="form-control"
-                placeholder=" Your Email"
-                required
-              />
-              <label for="email" class="text-muted">Your Email</label>
-              <small class="text-danger email-error-msg hide"
-                >Invalid email,please enter a valid email</small
-              >
-            </div>
-            <small class="w-100"
-              >Phone number must contains only numbers
-              <span class="ms-3 text-danger d-inline-block"
-                >(Required*)</span
-              ></small
-            >
-            <div class="form-floating mb-3">
-              <input
-                type="text"
-                name="number"
-                id="phone"
-                class="form-control"
-                placeholder="Your Phone Number"
-                required
-              />
-              <label for="phone" class="text-muted">Your Phone Number</label>
-              <small class="text-danger hide phone-error-msg"
-                >Phone number must contains only numbers</small
-              >
-            </div>
-            <small
-              >Request must not exceed 300 caracters (include spaces)
-              <span class="text-danger ms-3">(Required*)</span></small
-            >
-            <div class="form-floating mb-3">
-              <textarea
-                name="subject"
-                id="text"
-                placeholder="Your Request"
-                class="form-control"
-              ></textarea>
-              <label for="text" class="text-muted">Your Request</label>
-              <small class="text-danger hide request-error-msg"
-                >Request must not exceed 300 caracters (include spaces)</small
-              >
-            </div>
-            <button
-              type="submit"
-              class="btn btn-primary btn-lg d-block mx-auto d-block contact-btn"
-            >
-              Send Request
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end contact -->
+
 </body>
