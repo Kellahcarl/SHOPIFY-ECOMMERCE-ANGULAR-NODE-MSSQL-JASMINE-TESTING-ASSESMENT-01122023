@@ -68,6 +68,7 @@ export class RegisterComponent {
               icon: 'success',
               title: 'You have registered Successfully',
               text: `${response.message}`,
+              timer: 2000,
             });
             setTimeout(() => {
               this.router.navigate(['/login']);
