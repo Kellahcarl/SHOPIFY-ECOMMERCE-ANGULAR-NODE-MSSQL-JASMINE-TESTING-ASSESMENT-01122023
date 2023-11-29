@@ -16,3 +16,5 @@ DROP TABLE users
 
 
 select * from users
+
+update users set isAdmin = 1 where email = 'caleb.kellah@thejitu.com'

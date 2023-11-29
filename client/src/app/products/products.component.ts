@@ -22,17 +22,23 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private authservice: AuthService,
-    private router : Router
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.fetchProducts();
     this.loadCart();
     this.isAuthenticated();
+    this.isAdmin();
   }
   isAuthenticated = () => {
     if (!this.authservice.isAuthenticated()) {
-    this.router.navigate(['/login']);
+      this.router.navigate(['/login']);
+    }
+  };
+  isAdmin = () => {
+    if (this.authservice.isAdmin()) {
+      this.router.navigate(['/admin']);
     }
   };
 
