@@ -59,7 +59,7 @@ export class ProductComponent implements OnInit {
       this.token
     );
     this.isLoading = false;
-    console.log(this.product);
+    // console.log(this.product);
   }
 
   loadCart() {
