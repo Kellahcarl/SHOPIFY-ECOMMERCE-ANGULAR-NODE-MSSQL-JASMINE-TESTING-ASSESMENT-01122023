@@ -29,8 +29,8 @@
   margin-left: 0px;
   padding-left: 0%;
   padding: 20px;
-  width: 220px;
-  overflow: auto;
+  width: 20vw;
+  /* overflow: auto; */
   padding-top: 10%;
   min-height: 100vh;
   float: left;
@@ -75,6 +75,7 @@ nav ul li {
   background: #f9f9f9;
   padding: 20px;
   border-radius: 5px;
+  width: 80vw;
 }
 
 form input,
@@ -105,14 +106,18 @@ form button {
 }
 
 .product {
-  width: 50%;
+  width: 18vw;
   padding: 20px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .product img {
-  width: 100%;
-  height: auto;
+  width: 15vw;
+  height: 30vh;
 }
 
 .details {

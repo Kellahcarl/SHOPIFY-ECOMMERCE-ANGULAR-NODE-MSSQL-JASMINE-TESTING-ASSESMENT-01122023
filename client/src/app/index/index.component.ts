@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Product } from '../types/productService';
 import { ProductService } from '../services/product.service';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-index',
@@ -12,11 +14,22 @@ export class IndexComponent {
   token = localStorage.getItem('token');
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private authservice: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.fetchProducts()
+    this.fetchProducts();
+    this.isAuthenticated();
   }
+
+  isAuthenticated = () => {
+    if (this.authservice.isAuthenticated()) {
+      this.router.navigate(['/products']);
+    }
+  };
 
   fetchProducts = async () => {
     this.isLoading = true;
@@ -30,8 +43,7 @@ export class IndexComponent {
       this.products = await this.productService.getAllProducts(this.token);
 
       this.isLoading = false;
-      console.log(this.products);
-
+      // console.log(this.products);
     } catch (error) {
       console.log(error);
       this.isLoading = false;

@@ -9,10 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
-import { AdminGuard, AuthGuard } from './services/auth.service';
-
 import { AdminComponent } from './admin/admin.component';
-
 
 const routes: Routes = [
   {
@@ -22,14 +19,13 @@ const routes: Routes = [
   {
     path: 'product/:id',
     component: ProductComponent,
-
   },
   {
     path: 'products',
+
     component: ProductsComponent,
-    
   },
-  { path: 'about', component: AboutComponent, },
+  { path: 'about', component: AboutComponent },
   {
     path: 'login',
     component: LoginComponent,
@@ -37,9 +33,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'forgot', component: ForgotPasswordComponent },
   { path: 'reset', component: ResetPasswordComponent },
-  {path: 'admin', component:AdminComponent},
+  { path: 'admin', component: AdminComponent },
   { path: '**', redirectTo: '' },
-
 ];
 
 @NgModule({

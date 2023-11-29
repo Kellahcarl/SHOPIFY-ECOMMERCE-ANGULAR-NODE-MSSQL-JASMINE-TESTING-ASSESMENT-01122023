@@ -16,17 +16,19 @@
     <div class="logout">
       <a (click)="logout()" class="logout" style="cursor: pointer"> Logout</a>
     </div>
+
+    <div class="search-container my-4">
+    <input
+      [(ngModel)]="searchTerms"
+      type="text"
+      class="search-input"
+      placeholder="Search..."
+    />
+    <span class="search-icon"><i class="fas fa-search"></i></span>
   </div>
+  </div>
+
   <div class="content">
-    <div class="search-container">
-      <input
-        [(ngModel)]="searchTerms"
-        type="text"
-        class="search-input"
-        placeholder="Search..."
-      />
-      <span class="search-icon"><i class="fas fa-search"></i></span>
-    </div>
     <div class="card">
       <h2>Add Product</h2>
       <form [formGroup]="addProductForm" (ngSubmit)="onAddProductSubmit()">

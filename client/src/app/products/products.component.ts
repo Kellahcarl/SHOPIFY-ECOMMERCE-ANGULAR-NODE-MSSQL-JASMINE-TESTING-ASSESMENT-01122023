@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../types/productService';
 import { ProductService } from '../services/product.service';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -18,12 +19,22 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   filteredProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private authservice : AuthService) {}
+  constructor(
+    private productService: ProductService,
+    private authservice: AuthService,
+    private router : Router
+  ) {}
 
   ngOnInit() {
     this.fetchProducts();
     this.loadCart();
+    this.isAuthenticated();
   }
+  isAuthenticated = () => {
+    if (!this.authservice.isAuthenticated()) {
+    this.router.navigate(['/login']);
+    }
+  };
 
   logout() {
     this.authservice.logout();

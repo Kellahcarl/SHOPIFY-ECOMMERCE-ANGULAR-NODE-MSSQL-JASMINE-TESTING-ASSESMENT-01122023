@@ -18,13 +18,13 @@ export class AdminComponent {
 
   products: Product[] = [];
   user_name: string | null = localStorage.getItem('user_name');
+  token = localStorage.getItem('token');
 
   ngOnInit() {
     this.initForm();
     this.getProducts();
+    this.isAdmin();
   }
-
-  token = localStorage.getItem('token');
 
   constructor(
     private fb: FormBuilder,
@@ -64,6 +64,13 @@ export class AdminComponent {
       stock: ['', Validators.required],
     });
   }
+
+  isAdmin = () => {
+    if (!this.authservice.isAdmin()) {
+      // console.log("user is not admin");
+      this.router.navigate(['/products']);
+    }
+  };
 
   logout = () => {
     this.authservice.logout();
@@ -227,7 +234,7 @@ export class AdminComponent {
       });
       swalWithBootstrapButtons
         .fire({
-          title:`Delete ${product_title}! <br> Are you sure?`,
+          title: `Delete ${product_title}! <br> Are you sure?`,
           text: "You won't be able to revert this!",
           icon: 'warning',
           showCancelButton: true,

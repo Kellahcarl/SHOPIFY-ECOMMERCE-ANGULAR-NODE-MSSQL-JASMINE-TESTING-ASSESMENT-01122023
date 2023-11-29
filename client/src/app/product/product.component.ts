@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { Product } from '../types/productService';
 import { AuthService } from '../services/auth.service';
@@ -21,7 +21,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private authservice : AuthService
+    private authservice: AuthService,
+    private router : Router
   ) {}
 
   ngOnInit() {
@@ -32,9 +33,17 @@ export class ProductComponent implements OnInit {
       this.fetchProductDetails();
       this.loadCart();
     });
+
+    this.isAuthenticated();
   }
 
-  logout(){
+  isAuthenticated = () => {
+    if (!this.authservice.isAuthenticated()) {
+      this.router.navigate(['/login']);
+    }
+  };
+
+  logout() {
     this.authservice.logout();
   }
 
@@ -117,7 +126,7 @@ export class ProductComponent implements OnInit {
   }
 
   increaseQuantity(item: any) {
-    if (item.quantity <  20) {
+    if (item.quantity < 20) {
       item.quantity += 1;
       localStorage.setItem('cart', JSON.stringify(this.cartItems));
       this.updateCartTotal();
