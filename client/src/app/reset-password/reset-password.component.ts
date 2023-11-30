@@ -59,6 +59,10 @@ export class ResetPasswordComponent {
               icon: 'success',
               title: 'You have updated password Successfully',
               text: `${response.message}`,
+              didRender: () => {
+                const successMessage = document.querySelector('.swal2-title');
+                successMessage!.setAttribute('data-cy', 'reset-success-popup');
+              },
             });
             setTimeout(() => {
               this.router.navigate(['/login']);
@@ -69,6 +73,10 @@ export class ResetPasswordComponent {
               icon: 'error',
               title: 'Please try Again',
               text: `${response.error}`,
+              didRender: () => {
+                const errorMessage = document.querySelector('.swal2-title');
+                errorMessage!.setAttribute('data-cy', 'reset-error-popup');
+              },
             });
             setTimeout(() => {
               this.resetPasswordForm.reset();

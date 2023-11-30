@@ -11,7 +11,7 @@ Content-Type: application/json
 #####get all users
 
 get http://localhost:4100/user
-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhbGViLmJhcmFrYUB0aGVqaXR1LmNvbSIsImlkIjoiMjhlNjFmNmUtZTgzOC00MWM3LWExNTUtMzgwYTg0ZDc4ODcxIiwiaWF0IjoxNzAwOTk0NTc1LCJleHAiOjE3MDEwODA5NzV9.-LbWQugUV9a0G3Uk5OAZBN3HGbijJU-R9XxsxSImIoY
+token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJkaWFuYSIsImVtYWlsIjoiZGlhbmFhYmVyaTEyQGdtYWlsLmNvbSIsInVzZXJfaWQiOiIyZjQ0ZGM5Yi1hYjg2LTRhMmItOTg4OS1iM2NkOTVhZTM4MGYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAxMzMxOTQ4LCJleHAiOjE3MDE0MTgzNDh9.xT1C8qp8_i-6o00oGerRfTTbhdSI9iR0iw3zJY9K-HY
 
 #####get one user by id
 get http://localhost:4100/user/28e61f6e-e838-41c7-a155-380a84d78871

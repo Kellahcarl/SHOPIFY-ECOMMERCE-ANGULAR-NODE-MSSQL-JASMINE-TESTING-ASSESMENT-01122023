@@ -30,6 +30,7 @@
 
       <div
         class="cart-icon position-relative"
+        data-cy="cart"
         data-bs-toggle="offcanvas"
         data-bs-target="#cart"
         aria-controls="offcanvasRight"
@@ -105,8 +106,8 @@
       ></button>
     </div>
     <div class="offcanvas-body py-5">
-      <h1 class="h5">Your Bag:</h1>
-      <h2 *ngIf="cartItems.length === 0" class="h5 cart-emty-msg">
+      <h1 *ngIf="cartItems.length > 0 "class="h5">Your Bag:</h1>
+      <h2 *ngIf="cartItems.length === 0" class="h5 cart-empty-msg">
         Your cart is empty
       </h2>
       <div *ngIf="cartItems.length > 0" class="cart-content">
@@ -128,6 +129,7 @@
               <span
                 class="fs-6 fw-bold text-decoration-underline"
                 (click)="removeFromCart(item)"
+                data-cy="removeItem"
                 >Remove</span
               >
             </div>
@@ -137,6 +139,7 @@
               <button
                 type="button"
                 class="d-flex justify-content-center align-items-center text-primary btn cart-increase"
+                data-cy="increaseQuantity"
                 (click)="increaseQuantity(item)"
               >
                 <i class="bi bi-chevron-compact-up"></i>
@@ -150,6 +153,7 @@
               <button
                 type="button"
                 class="d-flex justify-content-center align-items-center btn text-primary cart-decrease"
+                data-cy="decreaseQuantity"
                 (click)="decreaseQuantity(item)"
               >
                 <i class="bi bi-chevron-compact-down"></i>
@@ -159,7 +163,7 @@
         </article>
       </div>
       <div *ngIf="cartItems.length > 0" class="cart-footer fw-bold fs-3">
-        Total: <span>{{ calculateTotal() | currency }}</span>
+        Total: <span data-cy="totalPrice">{{ calculateTotal() | currency }}</span>
       </div>
       <div *ngIf="cartItems.length > 0" class="w-100 position-relative">
         <button
@@ -191,6 +195,7 @@
         <form action="#" class="search-form">
           <div class="input-group">
             <input
+              data-cy="searchproduct"
               type="search"
               name="search"
               id="search"
@@ -207,10 +212,11 @@
         <div class="col-12">
           <div class="row gy-4 product-content">
             <div
+              data-cy="product"
               class="col-12 col-md-6 col-xl-4"
               *ngFor="let product of products | searchFilter : searchTerms"
             >
-              <div class="card shadow features-card">
+              <div class="card shadow features-card" routerLink="/product/{{ product.product_id }}">
                 <div class="card-body">
                   <div class="card-img-top">
                     <img
@@ -244,6 +250,7 @@
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Add to cart"
+                      data-cy="addToCart"
                       (click)="clickAddToCart(product)"
                     >
                       <i
@@ -251,6 +258,7 @@
                         data-bs-toggle="offcanvas"
                         data-bs-target="#cart"
                         aria-controls="offcanvasRight"
+
                       ></i>
                     </span>
                     <span
@@ -258,8 +266,10 @@
                       data-bs-toggle="tooltip"
                       data-bs-placement="top"
                       title="Search product"
-                      ><a routerLink="/product/{{ product.product_id }}"
-                        ><i class="bi bi-search rounded-circle ms-4"></i
+                      ><a
+
+                        routerLink="/product/{{ product.product_id }}"
+                        ><i data-cy="viewProduct" class="bi bi-search rounded-circle ms-4"></i
                       ></a>
                     </span>
                   </div>

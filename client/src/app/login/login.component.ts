@@ -48,6 +48,10 @@ export class LoginComponent {
             title: 'You have Logged In Successfully',
             text: `${response.message}`,
             timer: 2000,
+            didRender: () => {
+              const successMessage = document.querySelector('.swal2-title');
+              successMessage!.setAttribute('data-cy', 'logged-in-success-popup');
+            },
           });
 
           this.loginService.checkUserDetails(response.token).then((data) => {
@@ -73,6 +77,13 @@ export class LoginComponent {
             icon: 'error',
             title: 'Please try Again',
             text: `${response.error}`,
+            didRender: () => {
+              const errorMessage = document.querySelector('.swal2-title');
+              errorMessage!.setAttribute(
+                'data-cy',
+                'logged-in-error-popup'
+              );
+            },
           });
           setTimeout(() => {
             this.loginForm.reset();
