@@ -14,7 +14,7 @@ export class ForgotPasswordComponent {
   constructor(
     private userService: UserService,
     private fb: FormBuilder,
-    private router : Router
+    private router: Router
   ) {
     this.forgotForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -22,7 +22,6 @@ export class ForgotPasswordComponent {
   }
 
   ngOnInit() {
-
     this.forgotForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
     });
@@ -40,6 +39,10 @@ export class ForgotPasswordComponent {
               text: `${res.message}`,
               icon: 'success',
               confirmButtonText: 'Ok',
+              didRender: () => {
+                const successMessage = document.querySelector('.swal2-title');
+                successMessage!.setAttribute('data-cy', 'forgot-success-popup');
+              },
             }).then((result) => {
               this.router.navigate(['/reset']);
 
@@ -53,6 +56,10 @@ export class ForgotPasswordComponent {
               text: `${res.error}`,
               icon: 'error',
               confirmButtonText: 'Ok',
+              didRender: () => {
+                const errorMessage = document.querySelector('.swal2-title');
+                errorMessage!.setAttribute('data-cy', 'forgot-error-popup');
+              },
             }).then((result) => {
               this.forgotForm.reset();
             });

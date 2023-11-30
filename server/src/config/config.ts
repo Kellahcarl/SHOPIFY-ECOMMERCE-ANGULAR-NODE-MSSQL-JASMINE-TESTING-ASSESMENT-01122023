@@ -19,13 +19,13 @@ export const sqlConfig: sql.config = {
   },
 };
 
-async function TestConnection() {
-  const pool = await sql.connect(sqlConfig);
-  if (pool.connected) {
-    console.log("connected to database on port 1433");
-  } else {
-    console.log("not connected");
-  }
-}
+// async function TestConnection() {
+//   const pool = await sql.connect(sqlConfig);
+//   if (pool.connected) {
+//     console.log("connected to database on port 1433");
+//   } else {
+//     console.log("not connected");
+//   }
+// }
 
-TestConnection();
+// TestConnection();

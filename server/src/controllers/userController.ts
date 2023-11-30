@@ -114,7 +114,7 @@ export const loginUser = async (req: Request, res: Response) => {
       const recordset = result.recordset;
       const user = recordset[0];
 
-      console.log(user);
+      // console.log(user);
       
 
       if (!user) {
@@ -198,7 +198,7 @@ export const deleteUser = async (req: Request, res: Response) => {
 export const forgotPassword = async (req: Request, res: Response) => {
   try {
     const { email } = req.body;
-    console.log(email);
+    // console.log(email);
     
 
     if (!email) return res.status(400).send({ message: "email is required" });

@@ -35,3 +35,43 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('loginUser', () => {
+  cy.visit('/login');
+
+  cy.get('[data-cy="email"]').type('sandrachegem@gmail.com');
+  cy.get('[data-cy="password"]').type('@Qwerty123');
+
+  cy.get('[data-cy="login_user_btn"]').click();
+
+  cy.get('[data-cy="logged-in-success-popup"]');
+  cy.location('pathname').should('eq', '/products');
+});
+
+Cypress.Commands.add('addProduct', () => {
+  it('adds to cart', () => {
+    cy.visit('/products');
+
+    cy.get('[data-cy=product]:first').trigger('mouseover');
+
+    // Check if the features div is visible
+    cy.get('.features-card').should('be.visible');
+
+    // Click the "Add to cart" button of the first product, forcing the click
+    cy.get('[data-cy=product]:first [data-cy=addToCart]').click({
+      force: true,
+    });
+  });
+});
+
+Cypress.Commands.add('loginAdmin', () => {
+  cy.visit('/login');
+
+  cy.get('[data-cy="email"]').type('caleb.kellah@thejitu.com');
+  cy.get('[data-cy="password"]').type('@Qwerty123');
+
+  cy.get('[data-cy="login_user_btn"]').click();
+
+  cy.get('[data-cy="logged-in-success-popup"]');
+  cy.location('pathname').should('eq', '/admin');
+});

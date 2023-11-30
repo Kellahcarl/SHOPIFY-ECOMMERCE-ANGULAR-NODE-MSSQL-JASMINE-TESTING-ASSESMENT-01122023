@@ -69,6 +69,13 @@ export class RegisterComponent {
               title: 'You have registered Successfully',
               text: `${response.message}`,
               timer: 2000,
+              didRender: () => {
+                const successMessage = document.querySelector('.swal2-title');
+                successMessage!.setAttribute(
+                  'data-cy',
+                  'registered-success-popup'
+                );
+              },
             });
             setTimeout(() => {
               this.router.navigate(['/login']);
@@ -79,6 +86,10 @@ export class RegisterComponent {
               icon: 'error',
               title: 'Please try Again',
               text: `${response.error}`,
+              didRender: () => {
+                const errorMessage = document.querySelector('.swal2-title');
+                errorMessage!.setAttribute('data-cy', 'registered-error-popup');
+              },
             });
             setTimeout(() => {
               this.registrationForm.reset();
