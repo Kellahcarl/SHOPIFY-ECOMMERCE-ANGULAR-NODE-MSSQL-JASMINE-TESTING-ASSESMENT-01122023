@@ -38,14 +38,13 @@ export const createProduct = async (req: Request, res: Response) => {
     await execute(procedure, params);
     return res.send({ message: "product created successfully" });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.send((error as Error).message);
   }
 };
 export const updateProduct = async (req: Request, res: Response) => {
   try {
-    const { product_id, title, price, image,  description, stock } =
-      req.body;
+    const { product_id, title, price, image, description, stock } = req.body;
     // console.log(req.body);
 
     const { error } = validateUpdateProduct.validate(req.body);
@@ -60,15 +59,15 @@ export const updateProduct = async (req: Request, res: Response) => {
       title,
       price,
       image,
-      
+
       description,
       stock,
     };
 
     const ProcedureName = "updateProduct";
-    const params = newProject;
+   
 
-    await execute(ProcedureName, params);
+    await execute(ProcedureName, newProject);
 
     return res.status(200).send({ message: "Product updated successfully" });
   } catch (error) {
@@ -117,7 +116,7 @@ export const getProduct = async (req: Request, res: Response) => {
     res.json(result.recordset);
   } catch (error) {
     console.log(error);
-    res.status(404).send({ message: "internal server error" });
+    res.status(404).send({ error: "internal server error" });
   }
 };
 export const getProducts = async (req: Request, res: Response) => {

@@ -1,7 +1,10 @@
-import { execute } from "../services/dbconnect";
+import { execute, query } from "../services/dbconnect";
 import { comparePass, hashPass } from "../services/passwordHash";
 import {
   deleteUser,
+  forgotPassword,
+  getUser,
+  getUsers,
   loginUser,
   registerUser,
   updateUser,
@@ -16,6 +19,7 @@ jest.mock("../services/passwordHash.ts", () => ({
 // Mock the execute function
 jest.mock("../services/dbconnect.ts", () => ({
   execute: jest.fn(),
+  query: jest.fn(),
 }));
 
 // Mock the generateToken function
@@ -28,9 +32,8 @@ describe("users controller", () => {
     // Arrange
     const req: any = {
       body: {
-        user_name: "jonathan",
-        cohort_number: 20,
-        email: "caleb.baraka@thejitu.com",
+        user_name: "diana",
+        email: "dianaaberi12@gmail.com",
         password: "@Santa2023",
       },
     } as any;
@@ -94,9 +97,8 @@ describe("users controller", () => {
     // Arrange
     const reqRegister: any = {
       body: {
-        user_name: "jonathan",
-        cohort_number: 20,
-        email: "caleb.baraka@thejitu.com",
+        user_name: "diana",
+        email: "dianaaberi12@gmail.com",
         password: "@Santa2023",
       },
     };
@@ -130,9 +132,8 @@ describe("users controller", () => {
     // Arrange
     const reqRegister: any = {
       body: {
-        user_name: "jonathan",
-        cohort_number: 20,
-        email: "caleb.baraka@thejitu.com",
+        user_name: "diana",
+        email: "dianaaberi12@gmail.com",
         password: "shortpassword",
       },
     };
@@ -149,7 +150,7 @@ describe("users controller", () => {
     expect(resRegister.status).toHaveBeenCalledWith(400);
     expect(resRegister.json).toHaveBeenCalledWith({
       error:
-        "check email or password ! password should be atleast 8 characters long with letters symbols and uppercase , email should be firstname.lastname@thejitu.com",
+        "check email or password ! password should be atleast 8 characters long with letters symbols and uppercase letters",
     });
   });
 
@@ -217,10 +218,9 @@ describe("users controller", () => {
   it("update user successfully", async () => {
     const request = {
       body: {
-        club_id: "766d395f-fd79-4b81-930c-14a1c32cb3d2",
-        user_name: "John Doe",
-        email: "caleb.baraka@thejitu.com",
-        cohort_number: 20,
+        user_id: "28e61f6e-e838-41c7-a155-380a84d78871",
+        user_name: "caleb",
+        email: "baraka606@student.mmarau.ac.ke",
       },
     };
 
@@ -232,10 +232,9 @@ describe("users controller", () => {
     await updateUser(request as any, response as any);
 
     expect(execute).toHaveBeenCalledWith("updateUser", {
-      club_id: "766d395f-fd79-4b81-930c-14a1c32cb3d2",
-      user_name: "John Doe",
-      email: "caleb.baraka@thejitu.com",
-      cohort_number: 20,
+      user_id: "28e61f6e-e838-41c7-a155-380a84d78871",
+      user_name: "caleb",
+      email: "baraka606@student.mmarau.ac.ke",
     });
 
     expect(response.send).toHaveBeenCalledWith({
@@ -267,7 +266,7 @@ describe("users controller", () => {
   test("delete user successfully", async () => {
     const request = {
       params: {
-        club_id: "1a913633-c923-4228-8efd-a77512565eb1",
+        user_id: "1a913633-c923-4228-8efd-a77512565eb1",
       },
     };
 
@@ -279,7 +278,7 @@ describe("users controller", () => {
     await deleteUser(request as any, response as any);
 
     expect(execute).toHaveBeenCalledWith("deleteUser", {
-      club_id: "1a913633-c923-4228-8efd-a77512565eb1",
+      user_id: "1a913633-c923-4228-8efd-a77512565eb1",
     });
 
     expect(response.status).toHaveBeenCalledWith(201);
@@ -322,5 +321,79 @@ describe("users controller", () => {
 
     expect(response.status).toHaveBeenCalledWith(400);
     expect(response.send).toHaveBeenCalledWith({ error: "Id is required" });
+  });
+  test("get users successfully", async () => {
+    // Mock the query function to return a sample result
+    const mockResult = {
+      recordset: [
+        { id: 1, name: "User 1" },
+        { id: 2, name: "User 2" },
+      ],
+    };
+    (query as jest.Mock).mockResolvedValueOnce(mockResult);
+
+    const request = {} as any;
+    const response = {
+      json: jest.fn(),
+    } as any;
+
+    await getUsers(request, response);
+
+    expect(query).toHaveBeenCalledWith("EXEC getUsers");
+
+    // Ensure the response is sent with the correct user data
+    expect(response.json).toHaveBeenCalledWith(mockResult.recordset);
+  });
+
+  test("get user successfully", async () => {
+    // Mock the execute function to return a sample result
+    const mockResult = {
+      recordset: [
+        { id: "1a913633-c923-4228-8efd-a77512565eb1", name: "User 1" },
+      ],
+    };
+    (execute as jest.Mock).mockResolvedValueOnce(mockResult);
+    const request = {
+      params: {
+        user_id: "1a913633-c923-4228-8efd-a77512565eb1",
+      },
+    } as any;
+    const response = {
+      json: jest.fn(),
+    } as any;
+    await getUser(request, response);
+    expect(execute).toHaveBeenCalledWith("getUserById", {
+      user_id: "1a913633-c923-4228-8efd-a77512565eb1",
+    });
+    expect(response.json).toHaveBeenCalledWith(mockResult.recordset[0]);
+  });
+  test("initiate password reset successfully", async () => {
+    (execute as jest.Mock).mockResolvedValueOnce({
+      recordset: [{ user_id: "28e61f6e-e838-41c7-a155-380a84d78871" }],
+    });
+
+    const request = {
+      body: {
+        email: "dianaaberi12@gmail.com",
+      },
+    } as any;
+    const response = {
+      send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    } as any;
+
+    await forgotPassword(request, response);
+
+    // expect(execute).toHaveBeenCalledWith("getUserByEmail", {
+    //   email: "test@example.com",
+    // });
+    expect(execute).toHaveBeenCalledWith("forgotPassword", {
+      user_id: "28e61f6e-e838-41c7-a155-380a84d78871",
+    });
+
+    expect(response.status).toHaveBeenCalledWith(201);
+    expect(response.send).toHaveBeenCalledWith({
+      message: "check your email for a password reset link",
+    });
   });
 });
