@@ -1,7 +1,7 @@
 export interface Product {
   title: string;
   product_id: string;
-  price: string;
+  price: number;
   image: string;
   description: string;
   stock: number;
@@ -9,7 +9,7 @@ export interface Product {
 
 export interface createProduct {
   title: string;
-  price: string;
+  price: number;
   image: string;
   description: string;
   stock: number;

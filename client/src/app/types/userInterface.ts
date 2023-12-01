@@ -1,22 +1,26 @@
 export interface UpdateUser {
   user_id: string;
-  fullName: string;
+  user_name: string;
   email: string;
 }
 export interface User {
   password: string;
-  fullName: string;
+  user_name: string;
   email: string;
 }
 
-export interface ForgotUser {
+export interface ResetUser {
   user_id: string;
   password: string;
 }
 
+export interface ForgotUser{
+  email: string;
+}
+
 export interface checkDetailsUser {
   user_id: string;
-  fullname: string;
+  user_name: string;
   email: string;
 }
 

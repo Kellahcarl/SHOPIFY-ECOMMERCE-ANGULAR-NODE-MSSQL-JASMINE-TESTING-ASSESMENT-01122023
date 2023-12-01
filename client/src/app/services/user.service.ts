@@ -72,18 +72,7 @@ export class UserService {
     return await response.json();
   }
 
-  async updateUserImage(userDetails: userImage, token: string): Promise<any> {
-    const response = await fetch(`${this.apiUrl}/profile`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        token: token,
-      },
-      body: JSON.stringify(userDetails),
-    });
 
-    return await response.json();
-  }
 
   async deleteUserById(userId: string, token: string): Promise<any> {
     const response = await fetch(`${this.apiUrl}/${userId}`, {
